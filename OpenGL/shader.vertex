@@ -1,0 +1,24 @@
+#version 440
+
+layout (location = 0) in vec3 vertex_position;
+layout (location = 1) in vec3 vertex_color;
+layout (location = 2) in vec2 vertex_texcoord;
+
+out vec3 fragment_position;
+out vec3 fragment_color;
+out vec2 fragment_texcoord;
+
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+
+
+void main()
+{
+	fragment_position = vec4(modelMatrix * vec4(vertex_position, 1.0f)).xyz;
+	fragment_color = vertex_color;
+	fragment_texcoord = vec2(vertex_texcoord.x, 1.0 - vertex_texcoord.y);
+
+	gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(vertex_position, 1.0f);
+}
