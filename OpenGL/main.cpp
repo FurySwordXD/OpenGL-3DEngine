@@ -50,12 +50,20 @@ int main(int argc, char** argv)
 
 	shaders.setCamera(&camera);
 
-	std::string path = "C:\\Users\\Sainath\\Desktop\\car.obj";
+	char full[_MAX_PATH];
+	std::string cwd = _fullpath(full, "", _MAX_PATH);
+
+	std::string path = cwd + "\\Assets\\car.obj";
+	std::string texpath = cwd + "\\Assets\\wood.png";
+	std::cout << path;
+
 	OBJLoader objloader(path);
 	objloader.getData();
-	//path = "C:\\Users\\FurySwordXD\\Desktop\\arrows.obj";
-	//OBJLoader objloader2(path);
 
+	std::vector<Mesh> meshes;
+
+	for (int i = 0; i < 1; i++)
+		meshes.emplace_back(objloader.vertices, objloader.indices, texpath);
 
 	/*const aiScene* pScene = aiImportFile(path.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
 
@@ -82,13 +90,10 @@ int main(int argc, char** argv)
 		}
 	}*/
 
-	std::vector<Mesh> meshes;
-	//for (int i = 0; i < 1; i++)
-	//	meshes.emplace_back(objloader.vertices, objloader.indices);
-
 	//meshes.emplace_back(vertices, Indices);
 	//aiReleaseImport(pScene);
 	
+
 	while (!glfwWindowShouldClose(window.glfwWindow))
 	{
 		glfwPollEvents();

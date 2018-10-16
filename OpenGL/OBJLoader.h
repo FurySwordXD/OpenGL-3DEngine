@@ -52,14 +52,14 @@ public:
 						pos = 0;
 						std::string token;
 						//unsigned int index;
-						pos = temp.find("/");
+						pos = temp.find("//");
 						token = temp.substr(0, pos);
 						unsigned int index = stoi(token) - 1;
 						indices.push_back(index);
 						temp.erase(0, pos + 1);
-						if (temp.find("/") != std::string::npos)
+						if (temp.find("//") != std::string::npos)
 						{
-							token = temp.substr(pos + 1, temp.find("/"));
+							token = temp.substr(pos + 1, temp.find("//"));
 							std::cout << token << std::endl;
 						}
 						/*int c = 0;

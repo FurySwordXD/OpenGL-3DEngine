@@ -33,3 +33,5 @@
 #include "OBJLoader.h"
 #include "Mesh.h"
 
+#include <stdio.h>
+#include <direct.h>

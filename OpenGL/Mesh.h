@@ -5,7 +5,7 @@
 class Mesh
 {
 public:
-	Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices);
+	Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::string texturePath);
 	~Mesh();
 
 	void draw();

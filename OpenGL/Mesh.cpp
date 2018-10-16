@@ -1,12 +1,16 @@
 #include "Mesh.h"
 
-Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices)
+Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::string texturePath)
 {
 
 	drawcount = indices.size();
 
 	this->vertices = vertices;
 	this->indices = indices;
+	
+	Texture tex;
+	tex.filePath = texturePath;
+	textures.push_back(tex);
 
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
@@ -33,7 +37,7 @@ Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices)
 
 	for (unsigned int i = 0; i < textures.size(); i++)
 	{
-		std::string filePath = "C:\\Users\\FurySwordXD\\Desktop\\drawings\\Game\\wood.png";
+		std::string filePath = textures[i].filePath;
 
 		unsigned char* image = SOIL_load_image(filePath.c_str(), &textures[i].width, &textures[i].height, 0, SOIL_LOAD_RGBA);
 
