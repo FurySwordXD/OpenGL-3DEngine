@@ -40,8 +40,11 @@ void processInput(GLFWwindow* window, Camera& camera)
 
 int main(int argc, char** argv)
 {
+	char full[_MAX_PATH];
+	std::string cwd = _fullpath(full, "", _MAX_PATH);
+
 	Window window;
-	Shaders shaders;
+	Shaders shaders( cwd + "\\Shaders\\shader");
 
 	glfwSetCursorPosCallback(window.glfwWindow, cursor_position_callback);
 	Camera camera(90.0f, 4.0f / 3.0f, 0.01f, 1000.0f);
@@ -49,9 +52,6 @@ int main(int argc, char** argv)
 	camera.transform.setRotation(glm::vec3(0.f, 90 * 0.0175, 0.f));
 
 	shaders.setCamera(&camera);
-
-	char full[_MAX_PATH];
-	std::string cwd = _fullpath(full, "", _MAX_PATH);
 
 	std::string path = cwd + "\\Assets\\car.obj";
 	std::string texpath = cwd + "\\Assets\\wood.png";
