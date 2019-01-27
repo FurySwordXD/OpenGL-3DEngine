@@ -12,19 +12,19 @@ void processInput(GLFWwindow* window, Camera& camera)
 {
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
-		camera.transform.addPosition(camera.transform.getForwardVector() / glm::vec3(10));
+		camera.transform.addPosition(camera.transform.getForwardVector() / glm::vec3(100));
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
-		camera.transform.addPosition(-camera.transform.getForwardVector() / glm::vec3(10));
+		camera.transform.addPosition(-camera.transform.getForwardVector() / glm::vec3(100));
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
-		camera.transform.addPosition(-camera.transform.getRightVector() / glm::vec3(10));
+		camera.transform.addPosition(-camera.transform.getRightVector() / glm::vec3(100));
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{
-		camera.transform.addPosition(camera.transform.getRightVector() / glm::vec3(10));
+		camera.transform.addPosition(camera.transform.getRightVector() / glm::vec3(100));
 	}
 	static float xpos = mouseX, ypos = mouseY;
 	float deltaX = mouseX - xpos;
@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 	std::cout << path;
 
 	OBJLoader objloader(path);
-	objloader.getData();
+	//objloader.getData();
 
 	std::vector<Mesh> meshes;
 
